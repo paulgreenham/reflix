@@ -23,7 +23,7 @@ class App extends Component {
         { id: 3, isRented: false, title: "The Sword in the Stone", year: 1963, img: "https://scdn.nflximg.net/images/0230/3330230.jpg", descrShort: "Arthur is a young boy who just wants to be a knight's squire. Alas, he is dubbed 'Wart' early on, and it was all downhill from there for a while. On a hunting trip he falls in on Merlin, literally. Merlin is a possibly-mentally-unstable-and-ethically-dubious Wizard that turns Arthur into a literate, at-one-point harassed squirrel. Watch to find out what the heck that means." },
         { id: 4, isRented: false, title: "Beauty and the Beast", year: 2016, img: "https://images-na.ssl-images-amazon.com/images/I/51ArFYSFGJL.jpg", descrShort: "Basically the same as the original, except now Hermi-- Emma Wattson plays Belle, fittingly so some would say, given how actively progressive she is regarding women's rights. Rumor has it that in the bonus scenes she whips out a wand and turns Gaston into a toad, but in order to watch those scenes you need to recite a certain incantation." }
       ],
-      rentalCost: 6
+      rentalCost: 3
     }
   }
 
@@ -50,7 +50,7 @@ class App extends Component {
     const movieList = [...this.state.movies]
     const movie = movieList.find(m => m.id === id)
     if (currentUser.budget < this.state.rentalCost && !movie.isRented) {
-        return
+        return alert("Insufficient funds. Try returning currently rented movies first.")
     }
     else if (movie.isRented) {
         this.changeBudget(this.state.rentalCost)
