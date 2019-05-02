@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css'
-import Landing from './components/Landing';
-import Catalog from './components/Catalog';
-import MovieDetail from './components/MovieDetail';
+import Landing from './components/Landing'
+import Catalog from './components/Catalog'
+import MovieDetail from './components/MovieDetail'
 
 class App extends Component {
   constructor () {

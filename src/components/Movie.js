@@ -13,7 +13,7 @@ class Movie extends Component {
 
     render(){
         return (<div className="movie-image">
-            <Link to={`/movie/${this.props.movie.id}`}><img src={this.props.movie.img} alt={this.props.movie.title}/></Link>
+            <Link to={`/movies/${this.props.movie.id}`}><img className="title-pic" src={this.props.movie.img} alt={this.props.movie.title}/></Link>
             {this.props.movie.isRented ?
             <i className="fas fa-minus-circle" onClick={this.changeRentStatus}></i> : 
             <i className="fas fa-plus-circle" onClick={this.changeRentStatus}></i>}
