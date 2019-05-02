@@ -5,8 +5,8 @@ import '../style/user.css'
 
 class User extends Component {
 
-    sendUserId = () => {
-        this.props.getUserId(this.props.user.id)
+    sendUserId = async () => {
+        await this.props.setUser(this.props.user.id)
     }
 
     render(){

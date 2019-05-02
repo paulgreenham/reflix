@@ -44,7 +44,7 @@ class Landing extends Component {
             <div id="message">Who's Watching?</div>
             <div id="user-display">
                 {users.map(u => 
-                    <User key={u.id} user={u} getUserId={this.props.getUserId}/>
+                    <User key={u.id} user={u} setUser={this.props.setUser}/>
                 )}
             </div>
         </div>)

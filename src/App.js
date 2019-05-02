@@ -9,7 +9,6 @@ class App extends Component {
   constructor () {
     super ()
     this.state = {
-      // currentUser: {},
       currentUserId: "",
       users: [
         {id: "p1001", name: "Paul", budget: 20, rentedMovies: [], backgroundColor: "red"},
@@ -28,44 +27,50 @@ class App extends Component {
     }
   }
 
-  getUserId = (id) => {
+  setUser = id => {
     this.setState({
       currentUserId: id
     })
   }
 
+  getUserIndex = () => this.state.users.findIndex(u => u.id === this.state.currentUserId)
+
   changeBudget = amount => {
-    let tempUser = {...this.state.currentUser}
-    tempUser.budget += amount
+    const userList = [...this.state.users]
+    let currentUser = userList[this.getUserIndex()]
+    currentUser.budget += amount
     this.setState({
-      currentUser: tempUser
+      users: userList
     })
   }
 
   changeRentStatus = id => {
     const userList = [...this.state.users]
-    const currentUser = userList.find(u => u.id === this.state.currentUserId)
+    const currentUser = userList[this.getUserIndex()]
     const movieList = [...this.state.movies]
     const movie = movieList.find(m => m.id === id)
-    if (this.state.currentUser.budget < this.state.rentalCost && !movie.isRented) {
+    if (currentUser.budget < this.state.rentalCost && !movie.isRented) {
         return
     }
     else if (movie.isRented) {
         this.changeBudget(this.state.rentalCost)
-        currentUser.rentedMovies.
+        let mIndex = currentUser.rentedMovies.findIndex(m => m === id)
+        currentUser.rentedMovies.splice(mIndex, 1)
     }
-    else if (this.state.currentUser.budget >= this.state.rentalCost) {
+    else if (currentUser.budget >= this.state.rentalCost) {
         this.changeBudget( - this.state.rentalCost)
+        currentUser.rentedMovies.push(id)
     }
     movie.isRented = !movie.isRented
     this.setState({
-        movies: movieList
+        movies: movieList,
+        users: userList
     })
 }
 
   render() {
 
-    let currentUser = this.state.users.find(u => u.id === this.state.currentUserId)
+    let currentUser = this.state.users[this.getUserIndex()]
 
     return (
       <Router>
@@ -77,7 +82,7 @@ class App extends Component {
             </div>
             <div className="logo">REFLIX</div>
           </div>
-            <Route exact path='/' render={() => <Landing users={this.state.users} getUserId={this.getUserId}/>} />
+            <Route exact path='/' render={() => <Landing users={this.state.users} setUser={this.setUser}/>} />
             <Route exact path='/catalog' render={() => <Catalog user={currentUser} movies={this.state.movies} changeRentStatus={this.changeRentStatus} />} />
             <Route exact path='/movies/:id' render={({ match }) => <MovieDetail match={match} movies={this.state.movies} />} />
         </div>

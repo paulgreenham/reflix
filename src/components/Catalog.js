@@ -5,13 +5,12 @@ import '../style/catalog.css'
 
 class Catalog extends Component {
 
-    getRentedMovies = () => this.props.state.movies.filter(m => m.isRented)
+    getRentedMovies = () => this.props.movies.filter(m => m.isRented)
 
     render(){
-        let rented = this.props.user.rentedMovies
+        let rented = this.getRentedMovies()
         let allMovies = this.props.movies
         let budget = this.props.user.budget
-        console.log()
         return (<div id="catalog-container">
 
             <div className="header">
