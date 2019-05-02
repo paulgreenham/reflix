@@ -1,0 +1,16 @@
+.movie-image {
+    position: relative
+}
+
+img {
+    width: 20vw;
+    height: 28vw;
+    margin: 1vw;
+    position: relative;
+}
+
+.movie-image > i {
+    position: absolute;
+    top: 2vw;
+    right: 4vw;
+}

@@ -1,0 +1,21 @@
+#landing {
+    display: grid;
+    grid-template-rows: 2fr 3fr;
+    padding-bottom: 5vw;
+}
+
+#message {
+    display: grid;
+    font-size: 3vw;
+    justify-content: center;
+    align-content: flex-end;
+    margin-bottom: 5vw;
+}
+
+#user-display {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: black;
+    font-size: 1.5vw;
+    font-weight: bold;
+}

@@ -1,0 +1,26 @@
+#catalog-container {
+    text-align: left;
+}
+
+#budget {
+    text-align: right;
+    margin-right: 10vw;
+}
+
+.header {
+    margin-top: 1vw;
+}
+
+.header > input {
+    background-color: black;
+    color: gray;
+    border: slategray;
+    height: 4vh;
+    padding-left: 1vw;
+    font-size: 1.5vw;
+}
+
+.movies {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr)
+}

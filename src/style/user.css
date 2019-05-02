@@ -1,0 +1,14 @@
+.user-box {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    background-color: red;
+    margin: 2vw;
+    border-radius: 5px;
+    height: 25vh;
+}
+
+.user-box:active {
+    border: lightblue;
+    border-style: inset;
+}
