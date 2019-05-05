@@ -26,21 +26,33 @@ class App extends Component {
       rentalCost: 3
     }
   }
+  
+  getUserIndex = (id = this.state.currentUserId) => {
+    return this.state.users.findIndex(u => u.id === id)
+  }
 
-  setUser = id => {
+  setUser = async id => {
+    const userIndex = this.getUserIndex(id)
+    const userList = [...this.state.users]
+    const currentUser = userList[userIndex]
+    currentUser.budget = localStorage.users ? JSON.parse(localStorage.users)[userIndex].budget : 10
+    currentUser.rentedMovies = localStorage.users ? [...JSON.parse(localStorage.users)[userIndex].rentedMovies] : []
+    // const movieList = [...this.setState.movies]
+    // movieList.forEach(m => currentUser.rentedMovies.some(m.id) ? m.isRented = !m.isRented : null)
     this.setState({
-      currentUserId: id
+      currentUserId: id,
+      users: userList
     })
   }
 
-  getUserIndex = () => this.state.users.findIndex(u => u.id === this.state.currentUserId)
-
   changeBudget = amount => {
     const userList = [...this.state.users]
-    let currentUser = userList[this.getUserIndex()]
+    const currentUser = userList[this.getUserIndex()]
     currentUser.budget += amount
     this.setState({
       users: userList
+    }, function () {
+      localStorage.users = JSON.stringify(userList)
     })
   }
 
@@ -65,8 +77,10 @@ class App extends Component {
     this.setState({
         movies: movieList,
         users: userList
+    }, function () {
+      localStorage.users = JSON.stringify(userList)
     })
-}
+  }
 
   render() {
 
