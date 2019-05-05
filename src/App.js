@@ -9,7 +9,7 @@ class App extends Component {
   constructor () {
     super ()
     this.state = {
-      currentUserId: "",
+      currentUserId: "p1001",
       users: [
         {id: "p1001", name: "Paul", budget: 20, rentedMovies: [], backgroundColor: "red"},
         {id: "c1002", name: "Char", budget: 20, rentedMovies: [], backgroundColor: "green"},
@@ -31,17 +31,24 @@ class App extends Component {
     return this.state.users.findIndex(u => u.id === id)
   }
 
+  setRentedMovies = async (user) => {
+    const movieList = [...this.state.movies]
+    movieList.forEach(m => user.rentedMovies.some(r => r === m.id) ? m.isRented = true : m.isRented = false)
+    this.setState({
+      movies: movieList
+    })
+  }
+
   setUser = async id => {
     const userIndex = this.getUserIndex(id)
     const userList = [...this.state.users]
     const currentUser = userList[userIndex]
     currentUser.budget = localStorage.users ? JSON.parse(localStorage.users)[userIndex].budget : 10
     currentUser.rentedMovies = localStorage.users ? [...JSON.parse(localStorage.users)[userIndex].rentedMovies] : []
-    // const movieList = [...this.setState.movies]
-    // movieList.forEach(m => currentUser.rentedMovies.some(m.id) ? m.isRented = !m.isRented : null)
+    this.setRentedMovies(currentUser)
     this.setState({
       currentUserId: id,
-      users: userList
+      users: userList,
     })
   }
 
