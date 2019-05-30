@@ -5,11 +5,13 @@
   grid-template-rows: 1fr 19fr;
   height: 100vh;
   width: 100wv;
+  font-size: 20px;
 }
 
 .header {
   display: grid;
   grid-template-columns: 1fr 5fr;
+  font-size: 24px;
 }
 
 .links, .links:visited, .links:link {
@@ -23,5 +25,6 @@
 .logo {
   display: grid;
   justify-self: right;
-  color: lightblue;
+  color: #df0101ef;
+  font-weight: 700;
 }

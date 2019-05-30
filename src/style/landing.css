@@ -6,7 +6,7 @@
 
 #message {
     display: grid;
-    font-size: 3vw;
+    font-size: 54px;
     justify-content: center;
     align-content: flex-end;
     margin-bottom: 5vw;
@@ -16,6 +16,12 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     color: black;
-    font-size: 1.5vw;
+    font-size: 32px;
     font-weight: bold;
+}
+
+.fas {
+    font-size: 7vw;
+    margin-bottom: 1vw;
+    color: white;
 }

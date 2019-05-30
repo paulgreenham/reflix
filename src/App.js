@@ -8,13 +8,13 @@ import MovieDetail from './components/MovieDetail'
 class App extends Component {
   constructor () {
     super ()
-    this.state = {
+    this.state = {      //later versions will draw this data from the database
       currentUserId: "p1001",
-      users: [
-        {id: "p1001", name: "Paul", budget: 20, rentedMovies: [], backgroundColor: "red"},
-        {id: "c1002", name: "Char", budget: 20, rentedMovies: [], backgroundColor: "green"},
-        {id: "s1003", name: "Sofia", budget: 10, rentedMovies: [], backgroundColor: "yellow"},
-        {id: "n1004", name: "Naomi", budget: 10, rentedMovies: [], backgroundColor: "blue"},
+      users: [ 
+        {id: "p1001", name: "Paul", budget: 20, rentedMovies: [], backgroundColor: "red", icon: "fa-dragon"},
+        {id: "c1002", name: "Char", budget: 20, rentedMovies: [], backgroundColor: "green", icon: "fa-horse"},
+        {id: "s1003", name: "Sofia", budget: 10, rentedMovies: [], backgroundColor: "yellow", icon: "fa-cat"},
+        {id: "n1004", name: "Naomi", budget: 10, rentedMovies: [], backgroundColor: "blue", icon: "fa-otter"},
       ],
       movies: [
         { id: 0, isRented: false, title: "Tarzan", year: 1999, img: "https://vignette.wikia.nocookie.net/disney-fan-fiction/images/4/42/Tarzan_2004_cover.jpg/revision/latest?cb=20140331030811", descrShort: "Tarzan was born into wealth but raised into incredible misfortune. Shiprweck, parents mauled by a jaguar. Luckily, a troop of gorillas took him in, but the Big Daddy gorilla never took a liking to him. That is, until the end when it's too late. Why is it too late? Watch and find out." },

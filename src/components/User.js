@@ -13,6 +13,7 @@ class User extends Component {
         let user = this.props.user
         return (
             <Link to='/catalog' className="user-box" onClick={this.sendUserId} style={{backgroundColor: user.backgroundColor}}>
+                <i className={`fas ${user.icon}`}></i>
                 {user.name}
             </Link>
         )

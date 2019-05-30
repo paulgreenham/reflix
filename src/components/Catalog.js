@@ -23,6 +23,11 @@ class Catalog extends Component {
         })
     }
 
+    renderMovies = movies => {
+        return <div className="movies">{movies.map(m => <Movie movie={m} key={m.id} changeRentStatus={this.props.changeRentStatus} />)}</div>
+
+    }
+
     render(){
         let allMovies = this.getSearchedMovies(this.props.movies)
         let rented = this.getRentedMovies(allMovies)
@@ -38,13 +43,13 @@ class Catalog extends Component {
             {rented.length > 0 ?
             <div id="rented">
                 <h5>Rented:</h5>
-                <div className="movies">{rented.map(m => <Movie movie={m} key={"r" + m.id} changeRentStatus={this.props.changeRentStatus} />)}</div>
+                {this.renderMovies(rented)}
                 <hr/>
             </div> : null}
 
             <div id="catalog">
                 <h5>Catalog:</h5>
-                <div className="movies">{allMovies.map(m => <Movie movie={m} key={m.id} changeRentStatus={this.props.changeRentStatus} />)}</div>
+                {this.renderMovies(allMovies)}
             </div>
 
         </div>)
